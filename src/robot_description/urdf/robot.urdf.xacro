@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="diffbot">
+
+  <!-- ========================
+       Top-level robot description.
+       This file is simulator-agnostic except for the optional
+       Gazebo plugins which are injected only when use_sim=true.
+       ======================== -->
+
+  <xacro:arg name="use_sim" default="true"/>
+  <xacro:arg name="use_lidar" default="true"/>
+  <xacro:arg name="use_camera" default="true"/>
+
+  <xacro:property name="use_sim_enabled" value="$(arg use_sim)"/>
+  <xacro:property name="use_lidar_enabled" value="$(arg use_lidar)"/>
+  <xacro:property name="use_camera_enabled" value="$(arg use_camera)"/>
+
+  <xacro:property name="wheel_radius" value="0.08"/>
+  <xacro:property name="wheel_width" value="0.04"/>
+  <xacro:property name="wheel_separation" value="0.30"/>
+  <xacro:property name="chassis_length" value="0.35"/>
+  <xacro:property name="chassis_width" value="0.25"/>
+  <xacro:property name="chassis_height" value="0.10"/>
+  <xacro:property name="chassis_mass" value="2.0"/>
+  <xacro:property name="wheel_mass" value="0.3"/>
+  <xacro:property name="caster_mass" value="0.1"/>
+
+  <!-- Include modular xacros -->
+  <xacro:include filename="$(find robot_description)/urdf/chassis.xacro"/>
+  <xacro:include filename="$(find robot_description)/urdf/gazebo/materials.xacro"/>
+  <xacro:include filename="$(find robot_description)/urdf/gazebo/plugins.xacro"/>
+  <xacro:include filename="$(find robot_description)/urdf/sensors/lidar.xacro"/>
+  <xacro:include filename="$(find robot_description)/urdf/sensors/camera.xacro"/>
+
+  <!-- Base footprint -->
+  <link name="base_footprint"/>
+
+  <!-- Chassis and wheels -->
+  <xacro:chassis
+    wheel_radius="${wheel_radius}"
+    wheel_width="${wheel_width}"
+    wheel_separation="${wheel_separation}"
+    chassis_length="${chassis_length}"
+    chassis_width="${chassis_width}"
+    chassis_height="${chassis_height}"
+    chassis_mass="${chassis_mass}"
+    wheel_mass="${wheel_mass}"
+    caster_mass="${caster_mass}"/>
+
+  <!-- Sensors -->
+  <xacro:if value="${use_lidar_enabled}">
+    <xacro:lidar parent="base_link" x="0.12" y="0" z="0.12" radius="0.04"/>
+  </xacro:if>
+
+  <xacro:if value="${use_camera_enabled}">
+    <xacro:camera parent="base_link" x="0.10" y="0" z="0.08"/>
+  </xacro:if>
+
+  <!-- Gazebo-specific plugins (only when running in simulation) -->
+  <xacro:if value="${use_sim_enabled}">
+    <xacro:gazebo_plugins
+      wheel_radius="${wheel_radius}"
+      wheel_separation="${wheel_separation}"
+      left_joint="left_wheel_joint"
+      right_joint="right_wheel_joint"/>
+  </xacro:if>
+
+</robot>
