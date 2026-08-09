@@ -1,0 +1,12 @@
+.vscode/
+.codex
+__pycache__/
+*.pyc
+generated/
+build/
+install/
+log/
+.venv/
+.mypy_cache/
+.idea/
+.cache/
