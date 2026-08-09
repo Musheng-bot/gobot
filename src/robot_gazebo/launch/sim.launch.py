@@ -41,4 +41,9 @@ def generate_launch_description():
             ],
             output="screen",
         ),
+        Node(
+            package="mapper",
+            executable="occupancy_mapper",
+            output="screen",
+        ),
     ])
