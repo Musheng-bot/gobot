@@ -15,10 +15,8 @@ private:
     Map2d::SharedPtr map_;
 };
 
-class GlobalPlanner : public Planner {
-public:
-    GlobalPlanner(Map2d::SharedPtr map);
-    ~GlobalPlanner() override;
+class PathPlanner {
+
 };
 
 class Optimizer : public Planner {
@@ -32,10 +30,8 @@ struct ControlValue {
     float omega;
 };
 
-class LocalPlanner : public Planner {
-public:
-    LocalPlanner(Map2d::SharedPtr map);
-    ~LocalPlanner() override;
+class Controller : public Planner {
+
 };
 
 } // namespace gobot
