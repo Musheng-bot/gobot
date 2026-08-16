@@ -6,13 +6,9 @@
 
 存储所有的通信协议
 
-## planner
+## rush
 
-所有规划器，对于地图信息全部采用话题通信
-
-## mapper
-
-所有环境感知和地图模块
+导航主仓库
 
 ## robot_description
 
