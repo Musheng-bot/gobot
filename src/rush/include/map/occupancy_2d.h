@@ -3,7 +3,7 @@
 #include "base.h"
 #include "map/map_base.h"
 
-namespace gobot {
+namespace rush {
 
 class Occupancy2d : public Map2d {
 public:
@@ -12,4 +12,4 @@ public:
     float occupation(const Point2f &p) const override;
 };
 
-} // namespace gobot
+} // namespace rush

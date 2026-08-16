@@ -4,7 +4,7 @@
 
 #include <cmath>
 
-namespace gobot {
+namespace rush {
 Map2d::Map2d(const Point2f &origin, float resoltion_x, float resolution_y, int width, int height)
     : origin_(origin), resolution_x_(resoltion_x), resolution_y_(resolution_y), width_(width),
       height_(height) {}
@@ -24,4 +24,4 @@ const Point2f &Map2d::origin() const {
     return origin_;
 }
 
-} // namespace gobot
+} // namespace rush

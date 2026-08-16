@@ -4,7 +4,7 @@
 
 #include <memory>
 
-namespace gobot {
+namespace rush {
 
 class Map2d {
 public:
@@ -33,4 +33,4 @@ private:
     int height_;
 };
 
-} // namespace gobot
+} // namespace rush

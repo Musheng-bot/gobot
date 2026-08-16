@@ -1,37 +1,56 @@
 #pragma once
 
+#include "base.h"
 #include "map/map_base.h"
 
-namespace gobot {
+#include <memory>
+#include <optional>
+#include <string>
 
-class Planner {
-public:
-    Planner(Map2d::SharedPtr map);
-    virtual ~Planner();
-
-    Map2d::SharedPtr get_map() const;
-
-private:
-    Map2d::SharedPtr map_;
-};
+namespace rush {
 
 class PathPlanner {
-
-};
-
-class Optimizer : public Planner {
 public:
+    using Ptr = std::shared_ptr<PathPlanner>;
+
+    struct PlanResult {
+        std::optional<Path2f> path;
+        std::string detail;
+
+        bool is_success() const {
+            return path.has_value();
+        }
+    };
+
+    virtual ~PathPlanner();
+
+    virtual PlanResult plan_path(const Pose &robot_pose, const Pose &goal_pose,
+                                 bool use_fixed_goal_heading) = 0;
+};
+
+class Optimizer {
+public:
+    using Ptr = std::shared_ptr<Optimizer>;
+
+    struct OptimizeResult {
+        std::optional<Path2f> path;
+        std::string detail;
+
+        bool is_success() const {
+            return path.has_value();
+        }
+    };
+
     Optimizer(Map2d::SharedPtr map);
-    ~Optimizer() override;
+    virtual ~Optimizer();
+
+    virtual OptimizeResult optimize(const Pose &robot_pose, const Pose &goal_pose,
+                                    const Path2f &original_path, bool use_fixed_goal_heading);
 };
 
-struct ControlValue {
-    float speed;
-    float omega;
+class Controller {
+public:
+    using Ptr = std::shared_ptr<Controller>;
 };
 
-class Controller : public Planner {
-
-};
-
-} // namespace gobot
+} // namespace rush

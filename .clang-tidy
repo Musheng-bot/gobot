@@ -24,6 +24,14 @@ CheckOptions:
     value: lower_case
   - key: readability-identifier-naming.ParameterCase
     value: lower_case
+  - key: readability-identifier-naming.ParameterPackCase
+    value: lower_case
+  - key: readability-identifier-naming.PointerParameterCase
+    value: lower_case
+  - key: readability-identifier-naming.ConstantParameterCase
+    value: lower_case
+  - key: readability-identifier-naming.ConstantPointerParameterCase
+    value: lower_case
   - key: readability-identifier-naming.MemberCase
     value: lower_case
   # Private/protected members use a trailing underscore; public members do not.

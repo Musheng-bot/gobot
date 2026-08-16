@@ -2,7 +2,7 @@
 
 #include <vector>
 
-namespace gobot {
+namespace rush {
 
 struct Point2i {
     int x;
@@ -17,4 +17,9 @@ struct Point2f {
 using Path2i = std::vector<Point2i>;
 using Path2f = std::vector<Point2f>;
 
-} // namespace gobot
+struct Pose {
+    Point2f position;
+    float yaw; // [-pi, pi]
+};
+
+} // namespace rush
