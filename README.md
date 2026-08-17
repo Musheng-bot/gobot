@@ -1,23 +1,32 @@
 # Gobot
 
-一个导航算法的仿真实现平台，主要针对2D情况的避障和导航，部分思路和RM比赛时的实现思路很类似，不过没有复刻赛场的情况，也没把我当时写的算法直接移植过来，而是牺牲一点实时性和复杂性，换来现在的核心实现思路，当然也不是战队内部真实代码，而是纯粹我自己的思路
+我们的目标，是星辰大海
 
-## robot_msgs
+1. **Semantic Navigation / ObjectNav**
+   目标：**“在未知房间里找到椅子并导航到它附近。”**
+   重点：目标检测、语义地图、主动探索。
 
-存储所有的通信协议
+2. **Visual Language Navigation（VLN）**
+   目标：**“走出房间，右转，找到走廊尽头的沙发。”**
+   重点：语言 grounding、视觉历史、路径决策。
 
-## planner
+3. **Embodied Agent / Task Planning**
+   目标：**“找到红色箱子，如果路径被挡住就换路，到达后继续执行下一任务。”**
+   重点：VLM/LLM + Behavior Tree / Skill planning + 失败恢复。
 
-所有规划器，对于地图信息全部采用话题通信
+4. **Learning-based Policy**
+   目标：**“不用手写 frontier 规则，让网络自己学习下一步应该探索哪里。”**
+   重点：Imitation Learning / RL、policy learning。
 
-## mapper
+5. **World Model / Model-Based RL**
+   目标：**“机器人先预测不同动作未来会发生什么，再选择最优动作。”**
+   重点：学习动力学、latent world model、planning/MPC。
 
-所有环境感知和地图模块
+6. **VLA / 通用具身模型**
+   目标：**“输入一句自然语言，让模型同时理解环境并完成导航或操作任务。”**
+   重点：Vision-Language-Action、多任务数据、泛化。
 
-## robot_description
+主线是：
 
-存储不同的机器人外观
+**ObjectNav → VLN → Embodied Agent → World Model → VLA**
 
-## robot_gazebo
-
-存储不同的仿真环境配置
