@@ -1,0 +1,5 @@
+string map_name
+string decision_folder_map
+string frame_id
+---
+bool is_ready

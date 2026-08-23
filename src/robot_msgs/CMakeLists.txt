@@ -11,8 +11,11 @@ find_package(std_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
-  "msg/Command.msg"
-  "msg/NavCommand.msg"
+  "msg/LocalPlan.msg"
+  "msg/NavEvent.msg"
+  "msg/NavReplanStatus.msg"
+  "srv/NavCommand.srv"
+  "srv/NavExecutorCtx.srv"
   DEPENDENCIES std_msgs geometry_msgs
 )
 

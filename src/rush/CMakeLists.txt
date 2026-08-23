@@ -8,13 +8,17 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
+find_package(sensor_msgs REQUIRED)
+find_package(nav_msgs REQUIRED)
 find_package(robot_msgs REQUIRED)
 
-add_library(gobot_rush STATIC 
-  src/map/map_base.cpp
+add_library(rush_lib STATIC
+  src/map/map_config.cpp
+  src/nav_interface.cpp
+  src/rush_extended.cpp
 )
-target_include_directories(gobot_rush PUBLIC include)
-ament_target_dependencies(gobot_rush rclcpp robot_msgs)
+target_include_directories(rush_lib PUBLIC include)
+ament_target_dependencies(rush_lib rclcpp robot_msgs nav_msgs sensor_msgs)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

@@ -1,0 +1,26 @@
+# Command
+uint8 COMMAND_START=1
+uint8 COMMAND_CANCEL=2
+uint8 COMMAND_CHASE_START=4
+uint8 COMMAND_CHASE_UPDATE=5
+uint8 COMMAND_CHASE_STOP=6
+
+# Heading mode: decides sentry's heading at the end of navigation
+uint8 HEADING_MODE_AUTO_HEADING=0 # 不刻意要求
+uint8 HEADING_MODE_FIXED_HEADING=1 # 终点对齐 goal.orientation
+
+uint8 command
+uint32 task_id
+uint32 plan_id
+geometry_msgs/Pose goal
+uint8 heading_mode 0
+string detail
+---
+# status
+uint8 STATUS_ACCEPTED=0
+uint8 STATUS_REJECTED=1
+
+uint8 status
+uint32 task_id
+uint32 plan_id
+string detail
