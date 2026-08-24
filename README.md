@@ -1,6 +1,27 @@
 # Gobot
 
-我们的目标，是星辰大海
+Gobot 当前以 ROS 2 Humble + Gazebo Classic 11 为仿真基线，第一阶段目标是 ObjectNav：在未知房间中找到椅子并导航到它附近。
+
+## 快速启动
+
+```bash
+./compile.sh
+./run_sim.sh
+```
+
+默认无 GUI 运行以保证仿真服务端稳定；需要查看 Gazebo 窗口时运行：
+
+```bash
+source /opt/ros/humble/setup.bash
+source install/setup.bash
+ROS_LOG_DIR=/tmp/gobot-ros-log ros2 launch robot_gazebo sim.launch.py gui:=true
+```
+
+启动链包含 Gazebo Classic、机器人描述、`gazebo_ros` 插件、`slam_toolbox`、Nav2 和目标检测/导航节点。
+
+当前检测器是用于闭环联调的红色目标基线，后续可替换为 YOLO/RT-DETR，而不改变 `/object_nav/target_pose_camera` 接口。
+
+## 研究主线
 
 1. **Semantic Navigation / ObjectNav**
    目标：**“在未知房间里找到椅子并导航到它附近。”**
@@ -29,4 +50,3 @@
 主线是：
 
 **ObjectNav → VLN → Embodied Agent → World Model → VLA**
-

@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.8)
+project(robot_objectnav)
+find_package(ament_cmake REQUIRED)
+install(PROGRAMS robot_objectnav/target_navigator.py DESTINATION lib/${PROJECT_NAME} RENAME target_navigator)
+install(DIRECTORY robot_objectnav DESTINATION lib/${PROJECT_NAME})
+ament_package()

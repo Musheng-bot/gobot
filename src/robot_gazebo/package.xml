@@ -3,7 +3,7 @@
 <package format="3">
   <name>robot_gazebo</name>
   <version>0.0.1</version>
-  <description>Gazebo Classic 11 worlds and launch files for the Gobot robot.</description>
+  <description>Gazebo Classic 11 simulation worlds and ROS 2 launch files for Gobot.</description>
   <maintainer email="musheng@todo.todo">musheng</maintainer>
   <license>Apache-2.0</license>
 
@@ -15,7 +15,9 @@
   <exec_depend>launch_ros</exec_depend>
   <exec_depend>gazebo_ros</exec_depend>
   <exec_depend>gazebo_plugins</exec_depend>
-  <exec_depend>mapper</exec_depend>
+  <exec_depend>robot_navigation</exec_depend>
+  <exec_depend>robot_perception</exec_depend>
+  <exec_depend>robot_objectnav</exec_depend>
 
   <export>
     <build_type>ament_cmake</build_type>

@@ -10,12 +10,6 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(robot_msgs REQUIRED)
 
-add_library(gobot_rush STATIC 
-  src/map/map_base.cpp
-)
-target_include_directories(gobot_rush PUBLIC include)
-ament_target_dependencies(gobot_rush rclcpp robot_msgs)
-
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
