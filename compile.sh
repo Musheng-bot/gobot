@@ -1,4 +1,17 @@
 #!/bin/bash
+set -e
 
-source /opt/ros/humble/setup.bash
+if [[ -n "${ROS_DISTRO:-}" && -f "/opt/ros/${ROS_DISTRO}/setup.bash" ]]; then
+    ros_setup="/opt/ros/${ROS_DISTRO}/setup.bash"
+else
+    ros_setup="$(find /opt/ros -mindepth 2 -maxdepth 2 -type f -path '*/setup.bash' 2>/dev/null | sort -V | tail -n 1)"
+fi
+
+if [[ -z "$ros_setup" || ! -f "$ros_setup" ]]; then
+    echo "Error: no ROS installation with setup.bash found under /opt/ros" >&2
+    exit 1
+fi
+
+source "$ros_setup"
+echo "Building with ROS_DISTRO=${ROS_DISTRO}"
 colcon build --symlink-install --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
