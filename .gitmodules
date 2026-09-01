@@ -1,0 +1,3 @@
+[submodule "src/rm.cv.sentry2027-navigation"]
+	path = src/rm.cv.sentry2027-navigation
+	url = git@github.com:SJTU-RoboMaster-Team/rm.cv.sentry2027-navigation.git
