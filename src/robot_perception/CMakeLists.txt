@@ -1,6 +1,0 @@
-cmake_minimum_required(VERSION 3.8)
-project(robot_perception)
-find_package(ament_cmake REQUIRED)
-install(PROGRAMS robot_perception/target_detector.py DESTINATION lib/${PROJECT_NAME} RENAME target_detector)
-install(DIRECTORY robot_perception DESTINATION lib/${PROJECT_NAME})
-ament_package()
