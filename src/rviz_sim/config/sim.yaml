@@ -1,0 +1,8 @@
+/gobot/simulator:
+  ros__parameters:
+    initial_x: 0.0
+    initial_y: 0.0
+    initial_floor: 1
+    robot_radius: 0.25
+    command_timeout: 0.5
+    scene_config: scene/scene_example/scene.yaml

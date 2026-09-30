@@ -1,0 +1,5 @@
+floors:
+  - floor: 1
+    map: floor1/map.yaml
+  - floor: 2
+    map: floor2/map.yaml
